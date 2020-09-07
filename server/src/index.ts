@@ -14,10 +14,9 @@ createConnection()
   .then(async connection => {
     // Create a new express application instance
     const app = express();
-
-    const root = replace(__dirname, 'server/src', '');
+    let root = replace(__dirname, 'server/src', '');
+    root = replace(root, 'server/build', '');
     app.use(express.static(path.join(root, 'client/build')));
-
     // Call middleware
     app.use(cors());
     app.use(helmet());

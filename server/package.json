@@ -26,8 +26,9 @@
   },
   "scripts": {
     "tsc": "tsc",
+    "build": "tsc --outDir ./build",
     "start": "ts-node-dev ./src/index.ts",
-    "prod": "ts-node ./src/index.ts",
+    "prod": "cd build && node index.js",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
   }
 }

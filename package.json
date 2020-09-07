@@ -7,46 +7,22 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "@types/chai": "^4.2.12",
     "@types/lodash": "^4.14.161",
-    "@types/jest": "^26.0.13",
-    "jest": "24.9.0",
-    "ts-jest": "26.3.0",
-    "prettier": "^2.1.1",
-    "eslint": "6.8.0",
-    "webpack": "4.42.0",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
-    "@babel/plugin-proposal-decorators": "^7.10.5",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.20.5",
-    "eslint-plugin-react-hooks": "^4.1.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "react-app-rewired": "^2.1.6",
-    "customize-cra": "^1.0.0",
-    "get-yarn-workspaces": "^1.0.2",
     "concurrently": "^5.3.0"
   },
   "private": true,
   "scripts": {
     "test": "jest --runInBand --passWithNoTests",
     "dev": "concurrently \"cd client && yarn start\" \"cd server && yarn start\"",
-    "install": "yarn",
-    "build:react": "yarn && cd client && yarn build"
-
+    "build:react": "yarn && cd client && yarn build",
+    "prestart": "yarn && cd server && yarn build",
+    "start": "cd server && yarn prod",
+    "clean": "cd scripts && chmod 755 clean.sh && cd .. && yarn"
   },
   "author": "",
   "license": "ISC",
-  "workspaces": ["client", "server", "libs/**/*", "configs/**/*"]
+  "workspaces": ["client", "server", "libs/**/*", "configs/**/*"],
+  "engines": {
+    "node": "10.x"
+  }
 }
